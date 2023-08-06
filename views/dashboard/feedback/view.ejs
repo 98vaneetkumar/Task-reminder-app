@@ -1,0 +1,161 @@
+<section class="section">
+    <div class="section-header">
+     
+        <h1><%= title%></h1>
+  </div>
+
+  <div class="section-body">
+    <div class="col-12 col-sm-5 col-lg-12">
+      <div class="card">
+        <div class="card-header"></div>
+        <div class="card-body">
+            <div class="row">
+          
+         
+          <ul class="nav nav-pills mt-5" id="myTab3" role="tablist">
+          
+            
+          </ul>
+          <div class="col-md-6">
+          <div class="tab-content" id="myTabContent2">
+            <div
+              class="tab-pane fade active show"
+              id="home3"
+              role="tabpanel"
+              aria-labelledby="home-tab3"
+            >
+              <div class="row">
+                  <div class="col-md-6">
+                    <label>Name</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p><%= data.name%></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Email</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p><%= data?.email%></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Phone</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p><%= data?.mobile%></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Feedback</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p><%= data?.feed%></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Replied</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p><%= data?.isReplied== 1 ? 'Yes':'No' %></p>
+                  </div>
+                </div>
+
+                <%if(data.isReplied == true){%>
+
+                <h1> Replied</h1>
+
+                 <div class="form-group">
+                  <label>Title</label>
+                  <input type="text" name="question" id="question" value="<%= data?.title%>" class="form-control answer-2" placeholder="Enter your question" readonly>
+                  <div class="form-group">
+            <label>Solution</label>
+            <div class="input-group">
+              <textarea
+                type="text"
+                class="form-control"
+                placeholder="solution"
+                name="solution"
+                readonly
+                style="min-height: 200px"
+              ><%= data?.solution%></textarea>
+            </div>
+          </div>
+                 
+                  <!-- <input type="hidden" name="subject_id" value="%= data.subject_id%>">
+                  <input type="hidden" name="chapter_id" value="%= data.chapter_id%>"> -->
+
+                </div>
+                <%}%>
+
+                <br>
+                <div class="row">
+                  <button
+                    href="/admin/userDetails/"
+                    class="btn btn-primary"
+                    onclick="history.back()"
+                    >Back</button
+                  >
+                
+            </div>
+            </div>
+                
+            <div
+              class="tab-pane fade"
+              id="profile3"
+              role="tabpanel"
+              aria-labelledby="profile-tab3"
+            >
+             
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Experience</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>Expert</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Hourly Rate</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>10$/hr</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Total Projects</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>230</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>English Level</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>Expert</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Availability</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>6 months</p>
+                  </div>
+                </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

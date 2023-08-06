@@ -1,0 +1,94 @@
+<section class="section">
+  <div class="section-header">
+    <h1 id="animated_box">Terms and Condition</h1>
+    <!-- <button class="btn btn-primary ml-2" onclick="history.back()">Back</button> -->
+
+  </div>
+
+  <div class="section-body">
+    <form id="myform" action="/admin/termsAndConditions" method="post">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+
+            <div class="card-body">
+              <div class="form-group row mb-4">
+                <label class="col-form-label col-12">Title</label>
+                <div class="col-12">
+                  <input id="title" type="text" class="form-control" name="title" value="<%= content.title%>" />
+                  <input type="hidden" name="id" value="1" />
+                </div>
+              </div>
+
+              <div class="form-group row mb-4">
+                <label class="col-form-label col-12">Content</label>
+                <div class="form-group col-12">
+                  <textarea class="ckeditor form-control" id="content" name="content"><%= content.content %></textarea>
+                  <div class="content_error_div" style="color:red"></div>
+                </div>
+              </div>
+
+              <div class="form-group row mb-4">
+                <label class="col-form-label col-12"></label>
+                <div class="col-12 text-right">
+                  <button id="updateContent" class="btn btn-primary">
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+    $("#myform").validate({
+      ignore: [],
+      rules: {
+        title: {
+          required: true,
+        },
+        content: {
+          required: function (textarea) {
+            CKEDITOR.instances[textarea.id].updateElement();
+            var editorcontent = textarea.value.replace(/<[^>]*>/gi, "");
+            return editorcontent.length === 0;
+          },
+        },
+      },
+      messages: {
+        title: {
+          required: "filed is required",
+        },
+        content: {
+          required: "filed is required",
+        },
+      },
+      errorClass: "text-danger",
+      errorElement: "label",
+
+      errorPlacement: function (error, element) {
+        if ($(element).attr("name") == "content") {
+          $(".content_error_div").html("Please enter content");
+        }
+
+        // var placement = $(element).data('error');
+        // if (placement) {
+        //   $(placement).append(error)
+        // } else {
+        //   error.insertAfter(element);
+        // }
+      },
+
+      // submitHandler: function (form) {
+      //   $(".add_faq").attr("disabled", true);
+      //   form.submit();
+      // },
+    });
+  });
+</script>

@@ -1,0 +1,34 @@
+<section class="section">
+  <div class="section-header">
+    <h1>
+      <%= typeof data !=='undefined' ?"Edit":"Add" %> Category
+    </h1>
+  </div>
+  <form method="post" action="<%= typeof data !== 'undefined'?'/admin/edit_category':'/admin/add_category'%>">
+    <div class="card-body bg-white rounded-4 shadow">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= typeof data !== 'undefined' ? data.name : ''%>"
+          class="form-control locField" required="" />
+        <input type="hidden" name="id" value="<%= typeof data !== 'undefined' ? data.id : ''%>" />
+      </div>
+
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</section>
+
+<script>
+  $('.locField').on('keydown', function (e) {
+    if (e.which === 32 && e.target.selectionStart === 0) {
+      return false;
+    }
+  });
+
+  imgInp.onchange = (evt) => {
+    const [file] = imgInp.files;
+    if (file) {
+      blah.src = URL.createObjectURL(file);
+    }
+  };
+</script>

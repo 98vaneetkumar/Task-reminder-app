@@ -1,0 +1,439 @@
+<section class="section">
+  <div class="section-header">
+    <h1>Appointment Details</h1>
+  </div>
+
+  <div class="section-body">
+    <div class="col-12 col-sm-5 col-lg-12">
+      <div class="card">
+        <div class="card-header"></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="profile-img">
+                <img
+                  src="/images/userImg/<%= bookingInfo.patient_detail.image %>"
+                  height="250px"
+                  width="250"
+                />
+                <!-- <div class="file btn btn-lg btn-primary">
+                Change Photo
+                <input type="file" name="file" />
+            </div> -->
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="profile-head">
+                <h5><%= bookingInfo.patient_detail.name %></h5>
+                <!-- <h6>Web Developer and Designer</h6> -->
+                <div>
+                  <div class="row">
+                    <!-- <div class="col-md-6">
+                                                <label>Verification</label>
+                                            </div> -->
+                    <div class="col-md-6">
+                      <% if(bookingInfo.status=="0" ){%>
+
+                      <div class="badge badge-danger">Disapproved</div>
+                      <%}else if(bookingInfo.status=="1" ){%>
+                      <div class="badge badge-warning">Pending</div>
+                      <%}else {%>
+                      <div class="badge badge-success">Approved</div>
+                      <%}%>
+                    </div>
+                  </div>
+                </div>
+                <ul class="nav nav-pills mt-5" id="myTab3" role="tablist">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      id="home-tab3"
+                      data-toggle="tab"
+                      href="#home3"
+                      role="tab"
+                      aria-controls="home"
+                      aria-selected="false"
+                      >Patient's Info</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="profile-tab3"
+                      data-toggle="tab"
+                      href="#profile3"
+                      role="tab"
+                      aria-controls="profile"
+                      aria-selected="false"
+                      >Doctor's Info</a
+                    >
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabContent2">
+                  <div
+                    class="tab-pane fade active show"
+                    id="home3"
+                    role="tabpanel"
+                    aria-labelledby="home-tab3"
+                  >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Name</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p><%= bookingInfo.patient_detail.name %></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Email</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p><%= bookingInfo.patient_detail.email %></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Phone</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p><%= bookingInfo.patient_detail.mobile %></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Status</label>
+                      </div>
+                      <div class="col-md-6">
+                        <% if(bookingInfo.patient_detail.status=="1" ){%>
+                        <div class="badge badge-success">Active</div>
+
+                        <%}else{%>
+                        <div class="badge badge-danger">Blocked</div>
+                        <%}%>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Verification</label>
+                      </div>
+                      <div class="col-md-6">
+                        <% if(bookingInfo.patient_detail.isVerify=="0" ){%>
+                        <div class="badge badge-danger">Disapproved</div>
+                        <%}else if(bookingInfo.patient_detail.isVerify=="1" ){%>
+                        <div class="badge badge-warning">Pending</div>
+                        <%}else {%>
+                        <div class="badge badge-success">Approved</div>
+
+                        <%}%>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Gender</label>
+                      </div>
+                      <div class="col-md-6">
+                        <% if(bookingInfo.patient_detail.gender=="0" ){%>
+                        <div>Male</div>
+                        <%}else if(bookingInfo.patient_detail.gender=="1" ){%>
+                        <div>Female</div>
+                        <%}else {%>
+                        <div>Other</div>
+
+                        <%}%>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Date of Birth</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <%= moment(bookingInfo.patient_detail.birth_date
+                          ).format("DD-MM-YYYY") %>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="tab-pane fade"
+                    id="profile3"
+                    role="tabpanel"
+                    aria-labelledby="profile-tab3"
+                  >
+                    <!-- <form method=""> -->
+
+                    <!-- <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Change Doctor</label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <input name="changeDoctorId" type="text" id="brow2" list="brow" />
+                                                            <datalist id="brow">
+                                                                <% doctorsList.forEach((doctor)=>{%>
+                                                            <option value="<%= doctor.id %>"><%= doctor.name %></option>
+                                                        <%})%>
+                                                        
+                                                            </datalist>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 float-right">
+                                                        <button class="btn btn-success" onclick="changeDoctor('<%= bookingInfo.id%>' )">change</button></div>
+                                                    
+                                                </div> -->
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label>Change Doctor</label>
+                      </div>
+                      <div class="row-fluid">
+                        <select
+                          id="brow2"
+                          class="selectpicker"
+                          data-show-subtext="true"
+                          data-live-search="true"
+                        >
+                          <option>Select Doctor</option>
+                          <% doctorsList.forEach((doctor)=>{%>
+                          <option value="<%= doctor.id %>">
+                            <%= doctor.name %>
+                          </option>
+                          <%})%>
+                        </select>
+                        <div class="col-md-4 float-right">
+                          <button
+                            class="btn btn-success"
+                            onclick="changeDoctor('<%= bookingInfo.id%>' )"
+                          >
+                            change
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row mt-5">
+                      <div class="col-md-6">
+                        <label>Name</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p id="name"><%= bookingInfo.doctor_detail.name %></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Email</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p id="email"><%= bookingInfo.doctor_detail.email %></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Phone</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p id="mobile">
+                          <%= bookingInfo.doctor_detail.mobile %>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Status</label>
+                      </div>
+                      <div id="status" class="col-md-6">
+                        <% if(bookingInfo.doctor_detail.status=="1" ){%>
+                        <div class="badge badge-success">Active</div>
+
+                        <%}else{%>
+                        <div class="badge badge-danger">inactive</div>
+                        <%}%>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Verification</label>
+                      </div>
+                      <div id="verifcation" class="col-md-6">
+                        <% if(bookingInfo.doctor_detail.isVerify=="0" ){%>
+                        <div class="badge badge-danger">Disapproved</div>
+                        <%}else if(bookingInfo.doctor_detail.isVerify=="1" ){%>
+                        <div class="badge badge-warning">Pending</div>
+                        <%}else {%>
+                        <div class="badge badge-success">Approved</div>
+
+                        <%}%>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Gender</label>
+                      </div>
+                      <div class="col-md-6">
+                        <% if(bookingInfo.doctor_detail.gender=="0" ){%>
+                        <div>Male</div>
+                        <%}else if(bookingInfo.doctor_detail.gender=="1" ){%>
+                        <div>Female</div>
+                        <%}else {%>
+                        <div>Other</div>
+
+                        <%}%>
+                      </div>
+                    </div>
+                    <!-- <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Experience</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Expert</p>
+                                            </div>
+                                            </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Hourly Rate</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>10$/hr</p>
+                                            </div>
+                                            </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Total Projects</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>230</p>
+                                            </div>
+                                            </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                <label>English Level</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Expert</p>
+                                            </div>
+                                            </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Availability</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>6 months</p>
+                                            </div>
+                                            </div> -->
+                  </div>
+                  <!-- </form> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="col-12 col-sm-6 col-lg-12 mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h4>Patient's Note</h4>
+      </div>
+      <div class="card-body">
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <%- bookingInfo.patientNote %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="col-12 col-sm-6 col-lg-12 mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h4>Doctor's Note</h4>
+      </div>
+      <div class="card-body">
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <%- bookingInfo.doctorNote %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function changeDoctor(bookingID) {
+    var value = $("#brow2").val();
+    console.log(value);
+    if (value == "Select Doctor") {
+      console.log("ok");
+      Swal.fire("Any fool can use a computer");
+    }
+
+    $.ajax({
+      url: "/admin/changeDoctor",
+      type: "POST",
+      data: { doctorId: value, bookingId: bookingID },
+      beforeSend: function (msg) {
+        blockUI(".section-body");
+      },
+      success: function (result) {
+        if (result) {
+          $("#name").html(result.name);
+          $("#email").html(result.email);
+          $("#mobile").html(result.mobile);
+
+          if (result.status == 1) {
+            var status = `<div class="badge badge-success">Active</div>`;
+            $("#status").html(status);
+          } else {
+            var status = `<div class="badge badge-danger">inactive</div>`;
+            $("#status").html(status);
+          }
+          if (result.verification == 0) {
+            var html = `<div class="badge badge-danger">Disapproved</div>`;
+          } else if (result.verification == 1) {
+            var html = `<div class="badge badge-warning">Pending</div>`;
+          } else {
+            var html = `<div class="badge badge-success">Approved</div>`;
+          }
+          $("#verifcation").html(html);
+
+          unblockUI(".section-body");
+        } else {
+          console.log("sfsf");
+        }
+      },
+    });
+  }
+</script>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"
+></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.3/js/bootstrap-select.js"></script>

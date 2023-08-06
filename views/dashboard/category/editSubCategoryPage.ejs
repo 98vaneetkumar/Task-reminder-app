@@ -1,0 +1,76 @@
+<section class="section">
+  <div class="section-header">
+    <h1>Edit Sub Category</h1>
+  </div>
+  <div class="section-body card">
+    <form
+    method="post"
+    action="/admin/updateSubCategory"
+    enctype="multipart/form-data"
+  >
+    <div class="card-body">
+      <div class="form-group">
+        <label>Category</label>
+        <select name="categoryId" class="form-control">
+          <!-- <option value="">Select One Category</option> -->
+          <% categoryList.forEach((data)=>{%>
+
+          <option value="<%= data.id%>" <%= data.id == subCategoryInfo.898d3c.id ? "selected":"" %>><%= data.name%></option>
+          <%})%>
+        </select>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="hidden" name="id" value="<%- subCategoryInfo.id%>" />
+        <input
+          type="text"
+          name="name"
+          value="<%- subCategoryInfo.name%>"
+          class="form-control"
+          required=""
+        />
+      </div>
+      <!-- <div class="form-group">
+        <label>Image</label>
+        <input type="file" class="form-control" />
+      </div> -->
+      <img
+        id="blah"
+        name="image"
+        src="/images/userImg/<%- subCategoryInfo.image%>"
+        alt="your image"
+        width="150"
+        height="150"
+      />
+      <label class="control-label col-lg-3"></label>
+      <input accept="image/*" id="productimg" name="image" type="file" />
+      <!-- <div class="form-group">
+        <div class="control-label">Status</div>
+        <label class="custom-switch mt-2">
+          <input
+            type="checkbox"
+            name="custom-switch-checkbox"
+            class="custom-switch-input"
+          />
+          <span class="custom-switch-indicator"></span>
+          <span class="custom-switch-description"></span>
+        </label>
+      </div> -->
+    </div>
+    <div class="card-footer text-right">
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </form>
+  </div>
+</section>
+
+<script>
+  productimg.onchange = (evt) => {
+    const [file] = productimg.files;
+    if (file) {
+      blah.src = URL.createObjectURL(file);
+    }
+  };
+</script>

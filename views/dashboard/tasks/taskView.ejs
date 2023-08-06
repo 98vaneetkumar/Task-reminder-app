@@ -1,0 +1,85 @@
+<!-- Main Content -->
+<section class="section">
+  <div class="section-header">
+    <h1>Tasks View</h1>
+    <button class="btn btn-primary ml-2" onclick="history.back()">Back</button>
+
+  </div>
+</section>
+
+<div class="row">
+  <% task.forEach((data,i)=>{%>
+    <div class="col-md-4">
+      <div class="card_task">
+        <div class="card_header">
+          <div class="task_title">
+            <h4>
+              <%= data?.title %>
+            </h4>
+            <!-- <small>
+              <%= data?.roomCat.name%>
+            </small> -->
+          </div>
+        </div>
+        <div class="card_body p-3">
+          <div class="form-group mb-0">
+            <label for="">
+              <h5 class="mb-0">
+                <%= data?.task.whatToDo%>
+              </h5>
+            </label>
+            <input type="text" value=" <%= moment(data?.task?.startTime).format('DD-MM-YYYY') %> - <%=
+          moment(data?.task?.endTime).format('DD-MM-YYYY') %>" class="form-control" disabled />
+          </div>
+          <!-- <strong class="pt-2 text-dark">Lorem, ipsum</strong>
+          <meter id="disk_d" value="<%= data.task?.currentState %>" min="1" max="10">
+            60%
+          </meter> -->
+        </div>
+      </div>
+    </div>
+    <%})%>
+</div>
+
+<div class="row d-none">
+  <% task.forEach((data,i)=>{%>
+    <div class="col-md-3">
+      <div class="deshcard">
+        <div class="card_icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="card_body">
+          <h3 class="title">
+            <%= data?.title %>
+          </h3>
+          <span class="count">
+            <%= data?.roomCat.name%>
+          </span>
+          <h4>
+            <%= data?.task.whatToDo%>
+          </h4>
+          <p>
+            <%= moment(data?.task.startTime).format("DD-MM-YYYY") %> - <%=
+                moment(data?.task.endTime).format("DD-MM-YYYY") %>
+          </p>
+          <p>sdafafa</p>
+          <meter id="disk_d" value="0.<%= data.task?.currentState %>"></meter>
+        </div>
+      </div>
+    </div>
+    <%})%>
+      <div class="col-md-3">
+        <div class="deshcard">
+          <div class="card_icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="card_body">
+            <h3 class="title">Users</h3>
+            <span class="count">099999991</span>
+          </div>
+        </div>
+      </div>
+</div>
+
+<!-- main content End -->
+<script src="../assets/js/myScripts.js"></script>

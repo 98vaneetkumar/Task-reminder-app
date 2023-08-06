@@ -1,0 +1,57 @@
+<section class="section">
+  <div class="section-header">
+    <h1>
+      <%= typeof data !=='undefined' ?"Edit":"Add" %> Video
+    </h1>
+    <!-- <button class="btn btn-primary ml-2" onclick="history.back()">Back</button> -->
+
+  </div>
+  <form method="post" action="<%= typeof data !== 'undefined'?'/admin/editVideo':'/admin/add_video'%>"
+    enctype="multipart/form-data">
+    <div class="card-body bg-white rounded-4 shadow">
+
+
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" name="title" value="<%= typeof data !== 'undefined' ? data.title : ''%>"
+          class="form-control noSpace" required />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" name="description" value="<%= typeof data !== 'undefined' ? data.description : ''%>"
+          class="form-control noSpace" required />
+      </div>
+      <div class="form-group">
+        <label>Video</label>
+
+        <input type="file" name="videos" id="imgInp" value="<%= typeof data !== 'undefined' ? data.video : ''%>"
+          class="form-control noSpace" multiple />
+      </div>
+      <input type="hidden" name="id" value="<%= typeof data !== 'undefined' ? data.id : ''%>" />
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-4">
+            <video id="blah" class="w-100" src="/images/videos/<%= typeof data !== 'undefined' ? data?.video : ''%>"
+              controls></video>
+          </div>
+        </div>
+      </div>
+      <div class="text-right">
+
+        <button class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+
+    </div>
+  </form>
+</section>
+
+<script>
+  imgInp.onchange = (evt) => {
+    const [file] = imgInp.files;
+    if (file) {
+      blah.src = URL.createObjectURL(file);
+    }
+  };
+
+</script>

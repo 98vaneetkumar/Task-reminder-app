@@ -1,0 +1,52 @@
+<section class="section">
+  <div class="section-header">
+    <h1>
+      <%= typeof data !=='undefined' ?"Edit":"Add" %> Subscription Plan
+    </h1>
+    <!-- <button class="btn btn-primary ml-2" onclick="history.back()"><i class="fa fa-arrow-left"
+        aria-hidden="true"></i></button> -->
+
+  </div>
+  <form method="post" action="<%= typeof data !== 'undefined'?'/admin/edit_plan':'/admin/subscription'%>">
+    <div class="card-body bg-white rounded-4 shadow">
+      <div class="form-group">
+        <label>Amount</label>
+        <!-- <input type="number" name="price" oninput="inputNumberAbs()"
+          value="<%= typeof data !== 'undefined' ? data.price : ''%>" class="form-control noSpace" required="" /> -->
+
+          <input type="number" name="price" oninput="inputNumberAbs()"
+          value="<%= typeof data !== 'undefined' ? data.price : ''%>"
+          class="form-control noSpace" required="" maxlength="6" />
+        <label>Validity</label>
+        <input type="text" name="validity" value="<%= typeof data !== 'undefined' ? data.validity : ''%>"
+          class="form-control noSpace" required="" />
+          <label>Package Name</label>
+          <input type="text" name="packageName" value="<%= typeof data !== 'undefined' ? data.packageName : ''%>"
+            class="form-control noSpace" required="" />
+            <label>Description</label>
+            <input type="text" name="description" value="<%= typeof data !== 'undefined' ? data.description : ''%>"
+              class="form-control noSpace" required="" />
+        <input type="hidden" name="id" value="<%= typeof data !== 'undefined' ? data.id : ''%>" />
+      </div>
+
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</section>
+
+<script>
+
+  function inputNumberAbs() {
+    var input = document.getElementsByTagName("input")[0];
+    var val = input.value;
+    val = val.replace(/^0+|[^\d.]/g, '');
+    input.value = val.slice(0,6);
+  }
+
+  imgInp.onchange = (evt) => {
+    const [file] = imgInp.files;
+    if (file) {
+      blah.src = URL.createObjectURL(file);
+    }
+  };
+</script>

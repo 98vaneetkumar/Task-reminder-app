@@ -1,0 +1,52 @@
+<section class="section">
+  <div class="section-header">
+    <h1>
+      <%= typeof data !=='undefined' ?"Edit":"Add" %> Room Sub Category
+    </h1>
+    <!-- <button class="btn btn-primary ml-2" onclick="history.back()"><i class="fa fa-arrow-left"
+        aria-hidden="true"></i></button> -->
+
+  </div>
+  <form method="post"
+    action="<%= typeof data !== 'undefined'?'/admin/edit_room_sub_category':'/admin/add_room_sub_category'%>">
+    <div class="card-body bg-white rounded-4 shadow">
+      <!-- <div class="form-group">
+        <label>Category</label>
+        <select name="catId" class="form-control selectric">
+          <% category.forEach((catData,i)=>{%>
+            <option value="<%= catData.id %>" <%=typeof data !=='undefined' && catData?.name==data.roomCat?.name
+              ? "selected" : '' %> > <%= catData?.name%>
+            </option>
+            <%})%>
+        </select>
+      </div> -->
+      <div class="form-group">
+        <label>Room Category</label>
+        <select name="roomCat" class="form-control selectric">
+          <% roomCats.forEach((catData,i)=>{%>
+            <option value="<%= catData?.id %>" <%=typeof data !=='undefined' && catData?.name==data.roomCat?.name
+              ? "selected" : '' %> > <%= catData?.name%>
+            </option>
+            <%})%>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= typeof data !== 'undefined' ? data.name : '' %>"
+          class="form-control noSpace" required />
+        <input type="hidden" name="id" value="<%= typeof data !== 'undefined' ? data.id : ''%>" />
+      </div>
+
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</section>
+
+<script>
+  imgInp.onchange = (evt) => {
+    const [file] = imgInp.files;
+    if (file) {
+      blah.src = URL.createObjectURL(file);
+    }
+  };
+</script>

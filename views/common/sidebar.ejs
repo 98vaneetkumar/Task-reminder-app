@@ -1,0 +1,176 @@
+<div class="main-sidebar sidebar-style-2">
+  <aside id="sidebar-wrapper">
+    <div class="sidebar-brand">
+      <a href="/admin/dashboard"><img src="/assets/img/logo1.png" alt="logo" class="ml-2 mb-2 mt-2" width="100" /></a>
+    </div>
+
+    <div class="sidebar-brand sidebar-brand-sm">
+      <a href="/admin/dashboard"><img src="/assets/img/logo1.png" alt="logo" width="40" ; height="40"
+          class="ml-2 mt-2" /></a>
+    </div>
+    <ul class="sidebar-menu">
+
+      <li>
+        <a class="nav-link" href="/admin/dashboard"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+      </li>
+
+
+      <li>
+        <a class="nav-link" href="/admin/userList"><i class="fas fa-users"></i> <span>Users</span></a>
+      </li>
+      <li>
+        <a class="nav-link" href="/admin/category_list"><i class="fas fa-navicon"></i> <span>Categories</span></a>
+      </li>
+      <li>
+        <a class="nav-link" href="/admin/videos_list"><i class="fa-solid fa-video"></i> <span>Videos</span></a>
+      </li>
+      <li>
+        <a class="nav-link" href="/admin/plans_list"><i class="fas fa-star"></i> <span>Subscription Plans</span></a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+          <i class="fas fa-tasks"></i>
+          <span> Task Management </span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="">
+            <a class="nav-link" href="/admin/room_category_list">
+              Room Category
+            </a>
+          </li>
+
+          <li class="">
+            <a class="nav-link" href="/admin/room_subcategory_list">
+              Room Sub Category
+            </a>
+          </li>
+
+          <!-- <li class="">
+            <a class="nav-link" href="/admin/tasks_list">Pre Created Tasks</a>
+          </li> -->
+          <li class="">
+            <a class="nav-link" href="/admin/tasks_list2">Users Created Tasks</a>
+          </li>
+        </ul>
+      </li>
+      <!-- <li>
+        <a class="nav-link" href="/admin/test"
+          ><i class="far fa-square"></i> <span>test List</span></a
+        >
+      </li> -->
+      <!-- <%= title=='Feedback View' || title=='Feedback List  ' ? 'active' : '' %> -->
+      <li class="">
+        <a class="nav-link" href="/admin/feedList"><i class="fa-solid fa-list-check"></i><span>Feedback</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+          <i class="fas fa-feather-alt text-yellow"></i>
+          <span> Pages </span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="">
+            <a class="nav-link" href="/admin/termsAndConditions">
+              Terms And Conditions
+            </a>
+          </li>
+
+          <li class="">
+            <a class="nav-link" href="/admin/privacyPolicy"> Privacy Policy </a>
+          </li>
+
+          <li class="">
+            <a class="nav-link" href="/admin/aboutUs"> About Us </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+</div>
+<style>
+  aside#sidebar-wrapper {
+    padding-bottom: 110px;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPath = window.location.pathname;
+    console.log("current path===>", currentPath);
+
+    const menuLinks = document.querySelectorAll(".sidebar-menu li a.nav-link");
+
+    menuLinks.forEach((link) => {
+      if (link.getAttribute("href") === currentPath) {
+        link.parentNode.classList.add("active");
+
+        const dropdown = link.closest(".dropdown-menu");
+        if (dropdown) {
+          const parentLi = dropdown.parentNode;
+          link.classList.add("active");
+          parentLi.classList.add("show"); // Highlight and show parent li
+          const submenu = parentLi.querySelector(".dropdown-menu");
+          if (submenu) {
+            submenu.classList.add("show"); // Show submenu
+          }
+
+          const dropdownLinks = dropdown.querySelectorAll("li a.nav-link");
+          dropdownLinks.forEach((dropdownLink) => {
+            dropdownLink.addEventListener("click", function (event) {
+              event.preventDefault();
+              window.location.href = dropdownLink.getAttribute("href");
+            });
+          });
+        }
+      }
+    });
+
+    const sidebar = document.querySelector(".main-sidebar");
+    sidebar.addEventListener("click", function (event) {
+      if (!event.target.closest(".dropdown")) {
+        const openDropdown = document.querySelector(".dropdown.show");
+        if (openDropdown) {
+          openDropdown.classList.remove("show");
+          const activeLink = openDropdown.querySelector("a.active");
+          if (activeLink) {
+            activeLink.classList.remove("active");
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+<style>
+  /* Submenu background color on hover */
+  .sidebar-menu .dropdown-menu li:hover {
+    background-color: lightgreen;
+  }
+</style>
+
+
+<!-- <script>
+
+
+  let active = '';
+  let title = '';
+  if (request() = is('profile') == 'profile') {
+    active = 'active';
+    title = 'profile';
+  } elseif(request() = is('change-password') ==
+    'change-password') 
+    { active = 'active'; title = 'change-password'; }
+  <li class="nav-item dropdown {{ $active }}">
+    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-cog"></i><span>Setting</span></a>
+    <ul class="dropdown-menu">
+      <li class="{{ $title == 'profile' ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('update.profile') }}">Profile</a>
+      </li>
+      <li class="{{ $title == 'change-password' ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('change.password') }}">Change Password</a>
+      </li>
+    </ul>
+  </li>
+</script> -->
+

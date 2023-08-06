@@ -1,0 +1,96 @@
+<!-- Main Content -->
+<section class="section">
+  <div class="section-header">
+    <h1>Sub Categories List</h1>
+  </div>
+  <div class="row" id="tableID">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="col-sm-6">
+            <h4 class="card-title">Sub Categories Table</h4>
+          </div>
+          <div class="col-sm-6 text-right">
+            <a title="Add" class="btn btn-primary" href="/admin/addSubCategory">Add New</a>
+          </div>
+        </div>
+        <div class="table-responsive px-3">
+          <table id="subCategoryTable" class="table table-striped table-bordered" style="width: 100%">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Category Name</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% subCategory.forEach((data, i)=>{%>
+                <tr>
+                  <td>
+                    <%= i+1%>
+                  </td>
+                  <td>
+                    <%= data.category.name %>
+                  </td>
+                  <td>
+                    <%= data.name%>
+                  </td>
+                  <td>
+                    <% if(data.image){ %>
+                      <img id="blah" src="/images/userImg/<%= data.image %>" alt="your image" width="50" height="50" />
+                      <% }else{ %>
+                        <img id="blah" src="/assets/img/noimages.png" alt="your image" width="50" height="50" />
+                        <% } %>
+                  </td>
+                  <td>
+                    <div class="custom-control custom-control-primary custom-switch">
+                      <input onclick="subCategorystatus(this)" type="checkbox" class="custom-control-input"
+                        id="<%= data.id %>" <%=data.status==1? "checked" :"" %> >
+                      <label class="custom-control-label" for="<%= data.id %>"></label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="dropdown show">
+                      <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Actions
+                      </a>
+
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item deletCategory" title="Delete"
+                          onclick="deletSubCategory('<%= data.id %>')">
+                          Delete
+                        </a>
+                        <a class="dropdown-item" title="Edit" href="/admin/editSubategory/<%= data.id%>">Edit</a>
+                        <!-- <a class="dropdown-item" href="/admin//<%= data.id%>"
+                      >View</a
+                    > -->
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <%})%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- main content End -->
+<script src="../assets/js/myScripts.js"></script>
+<script>
+  imgInp.onchange = (evt) => {
+    const [file] = imgInp.files;
+    if (file) {
+      blah.src = URL.createObjectURL(file);
+    }
+  };
+
+
+</script>

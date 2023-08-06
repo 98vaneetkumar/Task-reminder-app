@@ -1,0 +1,57 @@
+<section class="section">
+  <div class="section-header">
+    <h1>Add Sub Category</h1>
+  </div>
+  <form method="post" id="addSubCategory" action="/admin/addSubCategory" enctype="multipart/form-data">
+    <div class="card-body bg-white rounded-4 shadow">
+      <div class="form-group">
+        <label>Category</label>
+        <select name="category_id" required class="form-control">
+          <option>Select Category</option>
+          <% categoryInfo.forEach((data)=>{%>
+            <option value="<%= data.id%>">
+              <%= data.name%>
+            </option>
+            <%})%>
+        </select>
+        <label>Name</label>
+        <input type="text" name="name" value="" class="form-control" required="" />
+      </div>
+      <div class="form-group d-flex mt-4">
+
+
+
+        <input accept="image/*" id="productimg" name="image" type="file" />
+      </div>
+      <div class=" text-right">
+        <button type="submit" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+    </div>
+
+  </form>
+</section>
+
+<script>
+  imgInp.onchange = (evt) => {
+    const [file] = imgInp.files;
+    if (file) {
+      blah.src = URL.createObjectURL(file);
+    }
+  };
+
+
+  $("#addSubCategory").validate({
+    rules: {
+      name: {
+        required: true
+      },
+    },
+    messages: {
+      name: {
+        required: "Sub-category name can't be blank",
+      }
+    }, errorClass: "text-danger",
+    errorElement: "label",
+  }); 
+</script>

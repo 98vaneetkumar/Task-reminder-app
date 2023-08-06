@@ -1,0 +1,132 @@
+<!-- Main Content -->
+
+<section class="section">
+  <div class="section-header">
+    <h1>Dashboard</h1>
+  </div>
+  <input type="hidden" id="message" value="<%= message %>" />
+</section>
+
+<div class="row">
+  <div class="col-md-3">
+    <a class="text-decoration-none" href="/admin/userList">
+      <div class="deshcard">
+        <div class="card_icon">
+          <!-- <i class="fas fa-users"></i> -->
+          <i class="fa-solid fa-user-plus"></i>
+        </div>
+        <div class="card_body">
+          <h3 class="title">Users</h3>
+          <span class="count">
+            <%= users%>
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-3">
+    <a class="text-decoration-none" href="/admin/category_list">
+      <div class="deshcard">
+        <div class="card_icon">
+          <!-- <i class="fas fa-users"></i> -->
+          <i class="fa fa-list-alt" aria-hidden="true"></i>
+        </div>
+        <div class="card_body">
+          <h3 class="title">Category</h3>
+          <span class="count">
+            <%= category%>
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-3">
+    <a class="text-decoration-none" href="/admin/videos_list">
+      <div class="deshcard">
+        <div class="card_icon">
+          <!-- <i class="fas fa-users"></i> -->
+          <i class="fa-solid fa-video"></i>
+        </div>
+        <div class="card_body">
+          <h3 class="title">Videos</h3>
+          <span class="count">
+            <%= videos%>
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-3">
+    <a class="text-decoration-none" href="/admin/room_category_list">
+      <div class="deshcard">
+        <div class="card_icon">
+          <i class="fas fa-home"></i>
+        </div>
+        <div class="card_body">
+          <h3 class="title">Room Category</h3>
+          <span class="count">
+            <%= roomCat%>
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-3">
+    <a class="text-decoration-none" href="/admin/room_subcategory_list">
+      <div class="deshcard">
+        <div class="card_icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="card_body">
+          <h3 class="title">Room Sub-Category</h3>
+          <span class="count">
+            <%= roomSubCat%>
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <!-- <div class="col-md-3">
+    <a class="text-decoration-none" href="/admin/tasks_list">
+      <div class="deshcard">
+        <div class="card_icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="card_body">
+          <h3 class="title">Tasks</h3>
+          <span class="count">
+            <%= task%>
+          </span>
+        </div>
+      </div>
+    </a>
+  </div> -->
+  <div class="col-md-3">
+    <a class="text-decoration-none" href="/admin/tasks_list2">
+      <div class="deshcard">
+        <div class="card_icon">
+          <i class="fa-solid fa-list-check"></i>
+        </div>
+        <div class="card_body">
+          <h3 class="title">Users Tasks</h3>
+          <span class="count">
+            <%= usersTask%>
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- main content End -->
+<script src="../assets/js/iziToast.min.js" type="text/javascript"></script>
+<script>
+  var message = $("#message").val();
+  if (message != "") {
+    iziToast.success({
+      // title: "Success",
+      position: "topRight",
+      message: "login Successfully",
+    });
+  }
+</script>

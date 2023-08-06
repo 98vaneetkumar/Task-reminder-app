@@ -1,0 +1,59 @@
+<section class="section">
+  <div class="section-header">
+    <h1>Invoices List</h1>
+  </div>
+
+  <div class="section-body">
+    <div class="row" id="tableID">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Invoices Table</h4>
+          </div>
+          <div class="table-responsive px-3">
+            <table
+              id="invoiceTable"
+              class="table table-striped table-bordered"
+              style="width: 100%"
+            >
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Doctor Name</th>
+                  <th>Patient Name</th>
+                  <th>Invoice no.</th>
+                  <!-- <th>Varification</th> -->
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% invoiceInfo.forEach((data, i)=>{ if(data.invoiceId !== null){
+                %>
+                <tr>
+                  <td><%= i+1 %></td>
+                  <td><%= data.doctor_detail.name%></td>
+                  <td><%= data.patient_detail.name%></td>
+                  <td><%= data.invoiceId%></td>
+                  <td>
+                    <a
+                      class="btn btn-primary"
+                      href="/admin/viewInvoice/<%= data.id%>"
+                      >View</a
+                    >
+                  </td>
+                </tr>
+                <%}})%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).ready(function () {
+    $("#invoiceTable").DataTable();
+  });
+</script>

@@ -1,0 +1,145 @@
+<section class="section">
+  <div class="section-header">
+    <h1>User's Info </h1>
+    <!-- <div class="row"> -->
+    <button class="btn btn-primary ml-2" onclick="history.back()"><i class="fa fa-arrow-left"
+        aria-hidden="true"></i></button>
+    <!-- </div> -->
+  </div>
+
+  <div class="section-body">
+    <div class="col-12 col-sm-5 col-lg-12">
+      <div class="card">
+        <div class="card-header"></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="profile-img">
+                <% if(userInfo?.image){%>
+                  <img src="/images/userImg/<%= userInfo?.image%>" height="225px" width="225" />
+                  <%}else{%>
+                    <img src="/assets/img/dummy-user.png" height="225px" width="225" />
+
+                    <%}%>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="profile-head">
+                <div>
+                  <div class="row">
+
+                  </div>
+                </div>
+
+                <div class="tab-content" id="myTabContent2">
+                  <div class="tab-pane fade active show" id="home3" role="tabpanel" aria-labelledby="home-tab3">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="color: #333; font-weight: bold;">
+                        <label>Name</label>
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <p style="color: #333; font-weight: bold;">
+                          <%= userInfo?.name%>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="color: #333; font-weight: bold;">
+                        <label>Email</label>
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <p style="color: #333; font-weight: bold;">
+                          <%= userInfo?.email%>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="color: #333; font-weight: bold;">
+                        <label>Phone</label>
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <p style="color: #333; font-weight: bold;">
+                          <%= userInfo?.countryCode %> <%= userInfo?.mobile %>
+                        </p>
+                      </div>
+                      
+                      
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="color: #333; font-weight: bold;">
+                        <label>Status</label>
+                      </p>
+                      </div>
+                      <div class="col-md-6">
+                        <% if(userInfo?.status=="1" ){%>
+                          <div class="badge badge-success">Active</div>
+
+                          <%}else{%>
+                            <div class="badge badge-danger">Inactive</div>
+                            <%}%>
+                      </div>
+                    </div>
+
+                    <!-- <div class="row">
+                  <div class="col-md-6">
+                    <label>Gender</label>
+                  </div>
+                  <div class="col-md-6">
+                     if(userInfo.gender=="0"){%>
+                    <p>Male</p>
+                    }else if(userInfo.gender=="1"){%>
+                    <p>Female</p>
+                    }else {%>
+                    <p>Other</p>
+                    }%>
+                  </div>
+                </div> -->
+
+
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="fire-modal-2" aria-modal="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_header">Modal Title</h5> <button type="button" class="close"
+          data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+      </div>
+      <div class="modal-body" id="modal_body"> Modal body text goes here.</div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  function openModal(modal_header, modal_body) {
+    var replacableString = modal_body.replace(/<>/g, "'");
+    $("#modal_header").html(modal_header);
+    $("#modal_body").html(replacableString);
+    $("#fire-modal-2").modal("show");
+  }
+
+  function openModal1(modal_header, modal_body) {
+    var replacableString = modal_body.replace(/<>/g, "'");
+    $("#modal_header").html(modal_header);
+    $("#modal_body").html(replacableString);
+    $("#fire-modal-2").modal("show");
+  }
+</script>
