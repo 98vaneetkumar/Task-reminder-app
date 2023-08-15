@@ -1847,7 +1847,7 @@ module.exports = {
   },
 
 //my self
-  createTask: async (req, res) => {
+createTask: async (req, res) => {
   try {
     const v = new Validator(req.body, {});
     let { taskId, startTime, endTime, currentState, reminder,time,day } = req.body;
@@ -1976,7 +1976,9 @@ module.exports = {
       daySkip = 1;
     }
 
-    let now = new Date();
+    let isoFormattedStartTime = moment(startTime, "DD-MM-YYYY").toDate();
+    let now = new Date(isoFormattedStartTime);
+    // let now = new Date();
     for (let i = 1; i <= count; i++) {
       let newDate = new Date(now.setDate(now.getDate() + daySkip));
 
@@ -1993,7 +1995,15 @@ module.exports = {
       };
       arr2.push(obj);
     }
+    const lowercaseSpecifiedDays = day.map(day => day.toLowerCase()); // Convert specified days to lowercase
+    
+    const filteredArr2 = arr2.filter(obj => {
+      const dayMatches = lowercaseSpecifiedDays.includes(obj.date.toLocaleString("en-us", { weekday: "long" }).toLowerCase());
+      return dayMatches;
+    });  
+    console.log(filteredArr2)
     let storedata = await db.notifications.bulkCreate(arr2);
+    let storedataOriginal = await db.notifications.bulkCreate(filteredArr2);
     console.log(storedata, "notification stores---------------");
 
     return helper.success(res, "task Created", newtask);
